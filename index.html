@@ -5,29 +5,53 @@
   <title>FacEDiT: Unified Talking Face Editing and Generation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Fonts -->
+  <!-- Optional (recommended) metadata for Nerfies-style pages -->
+  <meta name="description" content="FacEDiT: Unified Talking Face Editing and Generation via Facial Motion Infilling">
+  <meta name="keywords" content="talking face, diffusion transformer, facial motion, editing, generation">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
-  <!-- Bulma -->
+  <!-- Nerfies/Bulma stack (kept exactly as you had) -->
   <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
 
-  <!-- Custom Styles -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- Custom Styles (your originals, kept) -->
   <style>
+    .container.is-max-desktop {
+    max-width: 1200px !important; /* try 1100–1400 */
+    }
     body {
       font-family: "Noto Sans", sans-serif;
       color: #222;
     }
 
     .publication-title {
-      font-size: 2.4rem;
+      font-size: 2.8rem;
       font-weight: 700;
       line-height: 1.3;
     }
 
     .publication-authors {
-      font-size: 1rem;
+      font-size: 1.5rem;
       margin-top: 0.5rem;
     }
 
@@ -41,7 +65,7 @@
     }
 
     .teaser .subtitle {
-      font-size: 1rem;
+      font-size: 1.35rem;
       margin-top: 1rem;
       line-height: 1.6;
     }
@@ -58,7 +82,7 @@
       border: 1px solid #ddd;
       background: #fff;
       padding: 0.6rem 1.2rem;
-      font-size: 0.95rem;
+      font-size: 1.2rem;
       cursor: pointer;
       border-radius: 999px;
       transition: all 0.2s ease;
@@ -92,9 +116,9 @@
     }
 
     .section-description {
-      max-width: 900px;
+      max-width: 1400px;
       margin: 0 auto 1.5rem;
-      font-size: 1rem;
+      font-size: 1.3rem;
       line-height: 1.7;
       text-align: center;
       color: #444;
@@ -102,7 +126,7 @@
 
     video {
       width: 100%;
-      max-width: 960px;
+      max-width: 1400px;
       border-radius: 8px;
     }
 
@@ -117,28 +141,58 @@
     }
 
     ul.context {
-      max-width: 900px;
+      max-width: 1400px;
       margin: 1.5rem auto;
-      font-size: 0.95rem;
+      font-size: 1.4rem;
       line-height: 1.7;
     }
+
+    .hero.teaser .hero-body {
+  padding-bottom: 0rem !important; /* try 0–1rem */
+    }
+    ul.context li:first-child {
+  margin-bottom: 2rem;  /* adjust: 0.8rem ~ 2rem */
+  }
   </style>
 </head>
 
 <body>
 
+<!-- Nerfies-style navbar (minimal, layout-only) -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarMenu" class="navbar-menu">
+    <div class="navbar-end"></div>
+  </div>
+</nav>
+
+<!-- HERO (Nerfies-style) -->
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop has-text-centered">
       <h1 class="publication-title">
-        FacEDiT: Unified Talking Face Editing and Generation via Facial Motion Infilling
+        FacEDiT: Unified Talking Face Editing and Generation <br> via Facial Motion Infilling
       </h1>
 
       <div class="publication-authors">
-        <a href="#">Kim Sung-Bin</a><sup>1</sup>,
-        <a href="#">Joohyun Chang</a><sup>2</sup>,
-        <a href="#">David Harwath</a><sup>3</sup>,
-        <a href="#">Tae-Hyun Oh</a><sup>2</sup>
+        <span class="author-block">
+          <a href="https://sites.google.com/view/kimsungbin/">Kim Sung-Bin</a><sup>1</sup>,
+        </span>
+        <span class="author-block">
+          <a href="https://joohyunchang.com/">Joohyun Chang</a><sup>2</sup>,
+        </span>
+        <span class="author-block">
+          <a href="https://www.cs.utexas.edu/~harwath/">David Harwath</a><sup>3</sup>
+        </span>
+        <span class="author-block">
+          <a href="https://ami.kaist.ac.kr/members/tae-hyun-oh">Tae-Hyun Oh</a><sup>2</sup>
+        </span>
       </div>
 
       <div class="publication-authors">
@@ -146,47 +200,65 @@
       </div>
 
       <div class="publication-links">
-        <a class="button is-dark is-rounded" href="https://arxiv.org/abs/2504.02386">
-          <span class="icon"><i class="ai ai-arxiv"></i></span>
-          <span>arXiv</span>
-        </a>
-        <a class="button is-dark is-rounded" href="#">
-          <span class="icon"><i class="fab fa-github"></i></span>
-          <span>Code</span>
-        </a>
-        <a class="button is-dark is-rounded" href="#">
-          <span class="icon"><i class="far fa-images"></i></span>
-          <span>Data</span>
-        </a>
+        <span class="link-block">
+          <a class="button is-dark is-rounded" href="https://arxiv.org/abs/2504.02386">
+            <span class="icon"><i class="ai ai-arxiv"></i></span>
+            <span>arXiv</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a class="button is-dark is-rounded" href="#">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>Code</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a class="button is-dark is-rounded" href="#">
+            <span class="icon"><i class="far fa-images"></i></span>
+            <span>Data</span>
+          </a>
+        </span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section teaser">
-  <div class="container is-max-desktop has-text-centered">
-    <img src="./teaser.png" alt="FacEDiT Teaser">
-    <p class="subtitle">
-      <b>FacEDiT</b> is a speech-conditioned Diffusion Transformer that learns to infill masked facial motion.
-      This unified formulation supports both <i>talking face editing</i> where local motion is revised to match edited speech while preserving unedited regions, and
-      <i>from-scratch talking face generation</i>, which synthesizes full facial motion from scratch.
-    </p>
+<!-- TEASER (Nerfies-style section placement) -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered teaser">
+      <img src="./teaser.png" alt="FacEDiT Teaser">
+      <p class="subtitle">
+        <b>FacEDiT</b> is a speech-conditioned Diffusion Transformer that learns to infill masked facial motion.
+        This unified formulation supports both <i>talking face editing</i> where local motion is revised to match edited speech while preserving unedited regions, and
+        <i>from-scratch talking face generation</i>, which synthesizes full facial motion from scratch.
+      </p>
+    </div>
   </div>
 </section>
 
+<!-- MAIN CONTENT (Nerfies-style: stacked sections with max-desktop containers) -->
 <section class="section">
   <div class="container is-max-desktop">
 
     <ul class="context">
-      <li><b>Editing (V1):</b> Only the edited speech segment is provided; generated motion is stitched back.</li>
-      <li><b>Editing (V2):</b> The full video is regenerated from edited speech.</li>
+
+      <li>We present results for talking face editing and from-scratch talking face generation.
+        Because publicly available editing methods are limited, we repurpose existing from-scratch
+        generation models for editing in two settings (V1 and V2). We also evaluate from-scratch generation, where all models
+        generate the full video from the same input speech, enabling a fairer comparison.</li>
+
+      <li><b>Editing (V1):</b> Each model receives only the edited portion of the speech,
+            excluding unedited segments. The model generates the corresponding video segment,
+            which is then stitched back into the original video.</li>
+      <li><b>Editing (V2):</b> Each model generates the entire video from the edited speech.</li>
       <li><b>From-scratch:</b> Entire facial motion is synthesized from speech alone.</li>
     </ul>
 
     <div class="toggle-tabs">
-      <button class="active" onclick="showSection('v1')">Editing (V1)</button>
-      <button onclick="showSection('v2')">Editing (V2)</button>
-      <button onclick="showSection('gen')">From-scratch</button>
+      <button class="active" onclick="showSection(event, 'v1')">Editing (V1)</button>
+      <button onclick="showSection(event, 'v2')">Editing (V2)</button>
+      <button onclick="showSection(event, 'gen')">From-scratch</button>
     </div>
 
     <!-- V1 -->
@@ -261,12 +333,26 @@
 </section>
 
 <script>
-  function showSection(id) {
+  // Toggle: same behavior, but now robust (no reliance on global `event`)
+  function showSection(evt, id) {
     document.querySelectorAll('.option-section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.toggle-tabs button').forEach(b => b.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    event.target.classList.add('active');
+    if (evt && evt.target) evt.target.classList.add('active');
   }
+
+  // Small Nerfies-style navbar burger helper (safe even if unused)
+  document.addEventListener('DOMContentLoaded', () => {
+    const burgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    burgers.forEach((el) => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        if ($target) $target.classList.toggle('is-active');
+      });
+    });
+  });
 </script>
 
 </body>
